@@ -1,0 +1,33 @@
+# Docker build context is the repository root (Render uses backend/Dockerfile).
+# Keep the context small and never send secrets or dependencies to the daemon.
+
+.git
+.gitignore
+.github
+node_modules
+**/node_modules
+**/dist
+**/target
+**/.vite
+**/.idea
+**/.vscode
+**/.DS_Store
+
+# Secrets and local environment files must never enter the image.
+.env
+.env.*
+**/.env
+**/.env.*
+**/*.pem
+!backend/src/main/resources/tls/aiven-ca.pem
+**/*.key
+**/*.p12
+**/*.jks
+**/*.crt
+
+# The backend Dockerfile imports this public CA certificate into a truststore.
+!backend/src/main/resources/tls/aiven-ca.pem
+
+# The frontend is not part of the backend image.
+frontend
+**/*.md

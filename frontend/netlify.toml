@@ -1,0 +1,22 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Base URL of the Spring Boot backend. The backend allows this origin through
+  # APP_CORS_ALLOWED_ORIGINS on Render.
+  # TODO: replace with the real Render URL; the "/api" suffix is required.
+  VITE_API_BASE_URL = "https://tt-exam-backend.onrender.com/api"
+
+# SPA fallback so that client side routes keep working after a refresh.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -1,0 +1,68 @@
+# ---------- Secrets and environment files ----------
+.env
+.env.*
+!.env.example
+# Development-only frontend config (no secrets, just the localhost API url).
+!frontend/.env.development
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.jks
+*.keystore
+secrets/
+certs/
+
+# The Aiven CA certificate is a public trust anchor (no private key), so it is safe to commit.
+!backend/src/main/resources/tls/aiven-ca.pem
+
+# ---------- Node / frontend ----------
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ---------- Java / Maven ----------
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/timing.properties
+
+# ---------- Logs ----------
+logs/
+*.log
+
+# ---------- IDE ----------
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.iml
+*.ipr
+*.iws
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ---------- Operating system ----------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ---------- Test output ----------
+coverage/
+*.lcov

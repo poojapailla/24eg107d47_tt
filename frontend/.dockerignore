@@ -1,0 +1,14 @@
+node_modules
+dist
+.vite
+.git
+.gitignore
+
+# Local environment files must never enter the image.
+.env
+.env.*
+!.env.example
+
+*.md
+Dockerfile
+.dockerignore
