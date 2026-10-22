@@ -1,0 +1,24 @@
+# Netlify configuration for this monorepo.
+# The React app lives in frontend/, so the build runs there and publishes frontend/dist.
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Render backend URL. The "/api" suffix is required.
+  # Render allows this origin through APP_CORS_ALLOWED_ORIGINS.
+  VITE_API_BASE_URL = "https://tt-exam-backend.onrender.com/api"
+
+# SPA fallback so client-side routes survive a refresh.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
